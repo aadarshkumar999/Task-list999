@@ -1,0 +1,56 @@
+PageNotFound.css
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
+.number {
+    font-size: 30vmin;
+    font-weight: 900;
+    color: #fff;
+    background: #673ab7;
+    letter-spacing: 5vmin;
+    position: relative;
+    text-shadow: 2px -1px 0 #000, 4px -2px 0 hsl(0deg, 0%, 4%), 6px -3px 0 hsl(0deg, 0%, 6%);
+    background-image: radial-gradient(circle at 50% 50%, #ffc107 100%, rgba(0, 0, 0, 0)),
+                      radial-gradient(circle at 50% 50%, #e91e63 100%, rgba(0, 0, 0, 0));
+    background-size: 40vmin 40vmin;
+    background-repeat: repeat;
+    background-position: -100vmin 20vmin, 100vmin -25vmin;
+    mix-blend-mode: screen;
+    animation: moving 10s linear infinite;
+}
+
+.text {
+    font-family: 'Courgette', cursive;
+    font-weight: 400;
+    font-size: 5vmin;
+    margin-top: 10px;
+}
+
+.text span {
+    font-size: 10vmin;
+}
+
+.me {
+    color: #673ab7;
+    font-weight: bold;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.me:hover {
+    text-decoration: underline;
+}
+
+@keyframes moving {
+    to {
+        background-position: 100vmin 20vmin, -100vmin -25vmin;
+    }
+}
+/*  */
