@@ -1,53 +1,6 @@
-// import Todo from "../model/todo.model.js";
 
-// export const createTodo = async (req, res) => {
-//   console.log(req.body);
-  
-//   const todo = new Todo({
-//     text: req.body.text,
-//     completed: req.body.completed,
-//     //user: req.user._id, // associate todo with loggedin user
-//   });
+import Todo from "../model/todo.model.js";
 
-//   try {
-//     const newTodo = await todo.save();
-//     res.status(201).json({ message: "Todo Created Successfully", newTodo });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json({ message: "Error occuring in todo creation" });
-//   }
-// };
-
-  import Todo from "../model/todo.model.js";
-
-  // export const createTodo = async (req, res) => {
-
-  //   const todo = new Todo({
-  //     text: req.body.completed,
-  //     completed:req.body.completed,
-  //     user: req.user._id, //associcate todo with loggedin user
-  //   })
-
-  //   try {
-  //     const { text, completed } = req.body; // Ensure `text` and `completed` are provided in the request body
-      
-  //     // Validate presence of both fields
-  //     if (text == null || completed == null) {
-  //       return res.status(400).json({ error: "Both text and completed fields are required." });
-  //     }
-
-  //     const newTodo = new Todo({ text, completed });
-  //     await newTodo.save();
-  //     res.status(201).json(newTodo);
-  //   } catch (error) {
-  //     console.error(error);
-  //     res.status(500).json({ error: "An error occurred while creating the todo." });
-  //   }
-  // };
-  
-  //edit
-
-  // todo.controller.js
 export const createTodo = async (req, res) => {
   try {
       const userId = req.user._id; // Authentication middleware should populate req.user
@@ -77,7 +30,7 @@ export const createTodo = async (req, res) => {
       const { id } = req.params;
       const updates = req.body;
   
-      // Perform the update and convert the result to a plain object
+  
       const updatedTodo = await Todo.findByIdAndUpdate(id, updates, { new: true }).lean();
   
       if (!updatedTodo) {

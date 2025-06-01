@@ -58,9 +58,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            {/* <label className="absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:text-cyan-500">
-              Email
-            </label> */}
+           
           </div>
           <div className="relative h-11 w-full">
             <input
@@ -71,9 +69,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {/* <label className="absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:text-blue-gray-500 peer-focus:text-[11px] peer-focus:text-cyan-500">
-              Password
-            </label> */}
+           
           </div>
           <div className="mt-4 flex items-center">
             <input type="checkbox" id="rememberMe" className="mr-2" />

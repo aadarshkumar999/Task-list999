@@ -23,9 +23,7 @@ export const register= async (req, res)=>{
         return res.status(400).json({errors: errorMessage})
        }
         
-         const user = await User.findOne({email})
-
-
+         const user = await User.findOne({ email }).select("+password");
 
          if (user) {
             return res.status(400).json({message: "User already registered"})
@@ -49,6 +47,7 @@ export const register= async (req, res)=>{
 //login
 export const login= async(req, res)=>{
     const {email, password} = req.body;
+    
     try {
         if (!email || !password) {
             return res.status(400).json({errors: "All fields are required"});
