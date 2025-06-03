@@ -8,7 +8,7 @@
   "scripts": {
       "dev": "nodemon BACKEND/index.js",
       "build":"npm install && npm install --prefix FRONTEND && npm run build --prefix FRONTEND",
-      "start": "nodemon BACKEND/index.js",
+      "start": "node BACKEND/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
    
   },
