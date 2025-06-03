@@ -24,16 +24,25 @@ export default function Login() {
           },
         }
       );
-      console.log(data);
-      toast.success("Login successful");
-      navigateTo("/");
-      localStorage.setItem("jwt", data.token); // edit
-      // Redirect to a dashboard or home after login
-      console.log("Redirecting to /");
+
+      // First store the token
+      localStorage.setItem("jwt", data.token);
+
+      // Clear the form
       setEmail("");
       setPassword("");
+
+      // Show success message
+      toast.success("Login successful", {
+        duration: 2000,
+      });
+
+      // Wait for toast to show before navigating
+      setTimeout(() => {
+        navigateTo("/");
+      }, 1000);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(error.response?.data?.message || "Login failed");
     }
   };
