@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/user/login",
+        "https://task-list999-2.onrender.com/user/login",
         {
           email,
           password,
@@ -27,13 +27,11 @@ export default function Login() {
       console.log(data);
       toast.success("Login successful");
       navigateTo("/");
-      localStorage.setItem("jwt", data.token);// edit
-       // Redirect to a dashboard or home after login
+      localStorage.setItem("jwt", data.token); // edit
+      // Redirect to a dashboard or home after login
       console.log("Redirecting to /");
       setEmail("");
       setPassword("");
-      
-      
     } catch (error) {
       console.log(error);
       toast.error(error.response?.data?.message || "Login failed");
@@ -45,7 +43,7 @@ export default function Login() {
       <div className="max-w-sm w-full bg-white rounded-lg overflow-hidden shadow-lg p-6 text-gray-900">
         <div className="relative mx-4 -mt-6 mb-4 grid h-28 place-items-center overflow-hidden rounded-xl bg-gradient-to-tr from-cyan-600 to-cyan-400 bg-clip-border text-white shadow-lg shadow-cyan-500/40">
           <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
-           Login
+            Login
           </h3>
         </div>
         <form className="flex flex-col gap-4 p-6" onSubmit={handleLogin}>
@@ -58,7 +56,6 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-           
           </div>
           <div className="relative h-11 w-full">
             <input
@@ -69,11 +66,12 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-           
           </div>
           <div className="mt-4 flex items-center">
             <input type="checkbox" id="rememberMe" className="mr-2" />
-            <label htmlFor="rememberMe" className="text-gray-700">Remember Me</label>
+            <label htmlFor="rememberMe" className="text-gray-700">
+              Remember Me
+            </label>
           </div>
           <button
             type="submit"
@@ -83,7 +81,10 @@ export default function Login() {
           </button>
           <p className="mt-6 flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
             Don't have an account?
-            <Link to="/signup" className="ml-1 block font-sans text-sm font-bold leading-normal text-cyan-500 antialiased">
+            <Link
+              to="/signup"
+              className="ml-1 block font-sans text-sm font-bold leading-normal text-cyan-500 antialiased"
+            >
               Sign up
             </Link>
           </p>

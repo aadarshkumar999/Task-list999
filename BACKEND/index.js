@@ -36,7 +36,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "http://localhost:5173"],
+    origin: "https://task-list999-2.onrender.com",
+    // origin: "http://localhost:5173", // For local development
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: ["Content-Type", "Authorization"],

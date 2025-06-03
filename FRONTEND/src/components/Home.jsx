@@ -10,7 +10,6 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [newTodo, setnewTodo] = useState("");
-  
 
   const navigateTo = useNavigate();
 
@@ -18,9 +17,12 @@ export default function Home() {
     const fetchtodos = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:4001/todo/featch", {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          "https://task-list999-2.onrender.com/todo/featch",
+          {
+            withCredentials: true,
+          }
+        );
         setTodos(response.data.todos);
       } catch (error) {
         setError("Failed to fetch todos");
@@ -36,7 +38,7 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        "http://localhost:4001/todo/create",
+        "https://task-list999-2.onrender.com/todo/create",
         { text: newTodo, completed: false },
         { withCredentials: true }
       );
@@ -53,7 +55,7 @@ export default function Home() {
 
     try {
       const response = await axios.put(
-        `http://localhost:4001/todo/update/${id}`,
+        `https://task-list999-2.onrender.com/todo/update/${id}`,
         { completed: !todo.completed },
         { withCredentials: true }
       );
@@ -70,9 +72,12 @@ export default function Home() {
 
   const todoDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4001/todo/delete/${id}`, {
-        withCredentials: true,
-      });
+      await axios.delete(
+        `https://task-list999-2.onrender.com/todo/delete/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
       setTodos(todos.filter((t) => t._id !== id));
     } catch (error) {
       setError("Failed to delete todo");
@@ -81,7 +86,7 @@ export default function Home() {
 
   const logout = async () => {
     try {
-      await axios.get("http://localhost:4001/user/logout", {
+      await axios.get("https://task-list999-2.onrender.com/user/logout", {
         withCredentials: true,
       });
       toast.success("Logged out");

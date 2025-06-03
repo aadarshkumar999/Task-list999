@@ -1,20 +1,20 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigateTo=useNavigate()
+  const navigateTo = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/user/signup",
+        "https://task-list999-2.onrender.com/user/signup",
         {
           username,
           email,
@@ -28,13 +28,12 @@ export default function Signup() {
         }
       );
       console.log(data);
-      toast.success(data.message ||"Signup successful");
-      navigateTo("/login")
+      toast.success(data.message || "Signup successful");
+      navigateTo("/login");
       localStorage.setItem("jwt", data.token);
-      setUsername("")
-      setEmail("")
-      setPassword("")
-      
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.errors || "User already registred");
@@ -44,9 +43,14 @@ export default function Signup() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-50">
       <div className="max-w-sm w-full bg-white rounded-lg overflow-hidden shadow-lg p-6 text-gray-900">
-        <form onSubmit={handleRegister} className="flex flex-col gap-4 text-center">
+        <form
+          onSubmit={handleRegister}
+          className="flex flex-col gap-4 text-center"
+        >
           <span className="text-2xl font-semibold">Sign up</span>
-          <span className="text-sm text-gray-600">Create a free account with your email.</span>
+          <span className="text-sm text-gray-600">
+            Create a free account with your email.
+          </span>
 
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex flex-col gap-4">
             <input
@@ -79,11 +83,14 @@ export default function Signup() {
             Sign up
           </button>
         </form>
-        
+
         <div className="mt-4 text-center text-sm text-gray-700 bg-blue-100 p-4 rounded-b-lg shadow-inner">
           <p>
             Already have an account?{" "}
-            <Link to="/login" className="font-semibold text-cyan-700 hover:text-blue-500 transition">
+            <Link
+              to="/login"
+              className="font-semibold text-cyan-700 hover:text-blue-500 transition"
+            >
               Log in
             </Link>
           </p>
